@@ -11,11 +11,11 @@ public class BerlinClockTest {
 
     @Test
     @Parameters({
-            "00:00:00, OOOO",
+            "00:00:00, 0000",
             "23:59:59, YYYY",
-            "12:32:00, YYOO",
+            "12:32:00, YY00",
             "12:34:00, YYYY",
-            "12:35:00, OOOO"
+            "12:35:00, 0000"
     })
     public void shouldCalculateSingleMinutesRow(String time, String expectedMinutesRow) {
         //Given
@@ -28,11 +28,11 @@ public class BerlinClockTest {
 
     @Test
     @Parameters({
-            "00:00:00, OOOOOOOOOOO",
+            "00:00:00, 00000000000",
             "23:59:59, YYRYYRYYRYY",
-            "12:04:00, OOOOOOOOOOO",
-            "12:23:00, YYRYOOOOOOO",
-            "12:35:00, YYRYYRYOOOO"
+            "12:04:00, 00000000000",
+            "12:23:00, YYRY0000000",
+            "12:35:00, YYRYYRY0000"
     })
     public void shouldCalculateFiveMinutesRow(String time, String expectedFiveMinutesRow) {
         //Given
@@ -45,10 +45,10 @@ public class BerlinClockTest {
 
     @Test
     @Parameters({
-            "00:00:00, OOOO",
-            "23:59:59, RRRO",
-            "02:04:00, RROO",
-            "08:23:00, RRRO",
+            "00:00:00, 0000",
+            "23:59:59, RRR0",
+            "02:04:00, RR00",
+            "08:23:00, RRR0",
             "14:35:00, RRRR"
     })
     public void shouldCalculateSingleHourRow(String time, String expectedSingleHourRow) {
@@ -62,11 +62,11 @@ public class BerlinClockTest {
 
     @Test
     @Parameters({
-            "00:00:00, OOOO",
+            "00:00:00, 0000",
             "23:59:59, RRRR",
-            "02:04:00, OOOO",
-            "08:23:00, ROOO",
-            "16:35:00, RRRO"
+            "02:04:00, 0000",
+            "08:23:00, R000",
+            "16:35:00, RRR0"
     })
     public void shouldCalculateFiveHourRow(String time, String expectedFiveHoursRow) {
         //Given
@@ -80,7 +80,7 @@ public class BerlinClockTest {
     @Test
     @Parameters({
             "00:00:00, Y",
-            "23:59:59, O"
+            "23:59:59, 0"
     })
     public void shouldCalculateSecondsLamp(String time, String expectedSecondsLamp) {
         //Given
@@ -93,10 +93,10 @@ public class BerlinClockTest {
 
     @Test
     @Parameters({
-            "00:00:00, YOOOOOOOOOOOOOOOOOOOOOOO",
-            "23:59:59, ORRRRRRROYYRYYRYYRYYYYYY",
-            "16:50:06, YRRROROOOYYRYYRYYRYOOOOO",
-            "11:37:01, ORROOROOOYYRYYRYOOOOYYOO"
+            "00:00:00, Y00000000000000000000000",
+            "23:59:59, 0RRRRRRR0YYRYYRYYRYYYYYY",
+            "16:50:06, YRRR0R000YYRYYRYYRY00000",
+            "11:37:01, 0RR00R000YYRYYRY0000YY00"
     })
     public void shouldCalculateBerlinCloak(String time, String expectedBerlinClock) {
         //Given

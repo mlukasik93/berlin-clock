@@ -23,7 +23,12 @@
 */
 
 public class BerlinClock {
+
+
+    private String[] split;
+
     public String getClock(String time) {
+
         return getSecondsLamp(time)
                 + getFiveHoursRow(time)
                 + getSingleHourRow(time)
@@ -32,22 +37,101 @@ public class BerlinClock {
     }
 
     String getSingleMinutesRow(String time) {
-        return "";
+        split = time.split(":");
+        String singleMinute="0000";
+        if ((Integer.parseInt(split[1])) != 0) {
+            int temp = (Integer.parseInt(split[1]))%5;
+            switch (temp) {
+                case 1:
+                    singleMinute = "Y000";
+                    break;
+                case 2:
+                    singleMinute = "YY00";
+                    break;
+                case 3:
+                    singleMinute = "YYY0";
+                    break;
+                case 4:
+                    singleMinute = "YYYY";
+                    break;
+            }
+
+        }
+
+        return singleMinute;
     }
 
     String getFiveMinutesRow(String time) {
-        return "";
+        split = time.split(":");
+        String fiveMinutes = "";
+        String wholeTime = "YYRYYRYYRYY";
+        if (Integer.parseInt(split[1]) >= 5) {
+            int i = 0;
+            int temp = Integer.parseInt(split[1]) / 5;
+            while (i < wholeTime.length()) {
+                fiveMinutes = wholeTime.substring(0, temp);
+                i++;
+            }
+            for (int j = 0; j < (wholeTime.length() -temp); j++) {
+                fiveMinutes = new StringBuilder(fiveMinutes).append("0").toString();
+            }
+        } else fiveMinutes = "00000000000";
+        return fiveMinutes;
     }
 
     String getSingleHourRow(String time) {
-        return "";
+        split = time.split(":");
+        String singleHour = "0000";
+        if (Integer.parseInt(split[0]) % 5 != 0) {
+            int temp = Integer.parseInt(split[0]) % 5;
+            switch (temp) {
+                case 1:
+                    singleHour = "R000";
+                    break;
+                case 2:
+                    singleHour = "RR00";
+                    break;
+                case 3:
+                    singleHour = "RRR0";
+                    break;
+                case 4:
+                    singleHour = "RRRR";
+                    break;
+            }
+        }
+        return singleHour;
     }
 
     String getFiveHoursRow(String time) {
-        return "";
+        split = time.split(":");
+        String fiveHour = "0000";
+        if ((Integer.parseInt(split[0])) != 0) {
+            int temp = (Integer.parseInt(split[0])) / 5;
+            switch (temp) {
+                case 1:
+                    fiveHour = "R000";
+                    break;
+                case 2:
+                    fiveHour = "RR00";
+                    break;
+                case 3:
+                    fiveHour = "RRR0";
+                    break;
+                case 4:
+                    fiveHour = "RRRR";
+                    break;
+            }
+
+        }
+        return fiveHour;
     }
 
     String getSecondsLamp(String time) {
-        return "";
+        split = time.split(":");
+        String sec = "0";
+        if ((Integer.parseInt(split[2])) % 2 == 0) {
+            sec = "Y";
+        }
+        return sec;
     }
 }
